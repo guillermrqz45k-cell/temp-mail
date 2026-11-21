@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TempMail — Correo temporal real</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <h1>📬 TempMail</h1>
+    <p class="tagline">Correo temporal público y gratuito. Cualquiera puede generar una dirección sin registro ni contraseña, usarla para registrarse y leer aquí su código de confirmación.</p>
+  </header>
+
+  <section class="card" id="generate-card">
+    <button class="btn-primary" id="btn-generate">Generar correo temporal</button>
+    <p class="hint">Público, gratis y sin registro ni contraseña. La dirección se crea solo cuando tocas el botón: nunca cambia sola y se mantiene igual hasta que expire (30 minutos), la elimines o generes otra manualmente.</p>
+  </section>
+
+  <section class="card hidden" id="address-card">
+    <label class="label">Tu correo temporal</label>
+    <div class="address-row">
+      <code class="address" id="address">—</code>
+      <button class="btn" id="btn-copy-address">Copiar</button>
+    </div>
+    <div class="meta-row">
+      <span>⏳ Expira en <strong id="countdown">30:00</strong></span>
+      <span id="extended-badge" class="badge hidden">Extendido +30 min</span>
+    </div>
+    <div class="actions">
+      <button class="btn" id="btn-extend">Extender +30 min</button>
+      <button class="btn danger" id="btn-delete">Eliminar</button>
+      <button class="btn" id="btn-new">Nueva dirección</button>
+    </div>
+    <p class="hint" id="extend-note">Puedes extenderla una sola vez, por 30 minutos más.</p>
+  </section>
+
+  <section class="card hidden" id="inbox-card">
+    <div class="inbox-head">
+      <h2>📥 Bandeja de entrada</h2>
+      <span class="muted" id="inbox-count">0 correos</span>
+    </div>
+    <p class="muted small">Se actualiza sola cada 5 segundos.</p>
+    <ul class="mail-list" id="mail-list"></ul>
+    <p class="empty muted" id="inbox-empty">Sin correos todavía. Cuando llegue uno aparecerá aquí.</p>
+  </section>
+
+  <section class="card hidden" id="reader-card">
+    <button class="btn small" id="btn-back">← Volver a la bandeja</button>
+    <h2 id="reader-subject">—</h2>
+    <p class="muted small"><span id="reader-from">—</span> · <span id="reader-date">—</span></p>
+    <div class="code-box hidden" id="code-box">
+      <span class="code-label">Tu código de confirmación</span>
+      <span class="code" id="reader-code">—</span>
+      <button class="btn" id="btn-copy-code">Copiar código</button>
+    </div>
+    <pre class="body" id="reader-body">—</pre>
+  </section>
+
+  <footer class="foot">
+    <p>Servicio público y anónimo: cualquiera puede generar su propio correo temporal sin crear cuenta. Las direcciones duran 30 minutos (extensibles una vez por 30 minutos más) y al expirar se eliminan solas con todos sus correos. Úsalo solo para registros y confirmaciones, nunca para cuentas importantes.</p>
+  </footer>
+</main>
+<div class="toast hidden" id="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>
